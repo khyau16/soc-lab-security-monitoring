@@ -31,4 +31,7 @@ Snort IDS Alerts
 ## Log Collection & Detection
 - System and authentication logs are collected from the victim machine and forwarded to Splunk.  
 - Example detection queries used in Splunk:
-- to be continued.
+
+```spl
+index=ubuntu "Failed password"
+index=ubuntu "Failed password" | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)" | stats count by src_ip

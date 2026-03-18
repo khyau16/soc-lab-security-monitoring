@@ -1,0 +1,18 @@
+# =====================================
+# SOC LAB - SPLUNK QUERIES
+# =====================================
+
+# Target: Ubuntu Server logs forwarded to Splunk
+# Purpose: Detect attacks generated from Kali Linux in lab
+
+
+# ------------------------------
+# 1. Failed SSH Login Attempts
+# ------------------------------
+# Detect brute-force SSH login attempts
+index=ubuntu "Failed password"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+
+# Purpose:
+# Shows source IP for repeated failed SSH logins
